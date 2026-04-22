@@ -1,0 +1,120 @@
+name: Daily Nuclear Medicine Review
+
+on:
+  schedule:
+    # 03:00 UTC = 23:00 Martinique (UTC-4, pas de DST)
+    - cron: '0 3 * * *'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Ne pas envoyer d'email, juste générer le HTML"
+        required: false
+        default: "false"
+        type: choice
+        options:
+          - "false"
+          - "true"
+
+permissions:
+  contents: write   # necessaire pour commit sur gh-pages
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      # ---- Restauration de l'historique depuis gh-pages ----
+      - name: Restore history.json from gh-pages
+        continue-on-error: true
+        run: |
+          git fetch origin gh-pages --depth=1 || echo "Pas de branche gh-pages (premier run)"
+          git show origin/gh-pages:history.json > output/history.json 2>/dev/null || echo "Pas d'historique prealable"
+
+      - name: Run daily review
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          PUBMED_API_KEY: ${{ secrets.PUBMED_API_KEY }}
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+          RECIPIENT_EMAIL: ${{ secrets.RECIPIENT_EMAIL }}
+          PUBLIC_ARCHIVE_URL: ${{ secrets.PUBLIC_ARCHIVE_URL }}
+        run: |
+          if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
+            python -m src.main --dry-run --verbose
+          else
+            python -m src.main --verbose
+          fi
+
+      - name: Upload HTML artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: review-${{ github.run_id }}
+          path: output/
+          retention-days: 90
+
+      # ---- Publication sur gh-pages (archive web) ----
+      - name: Publish to gh-pages
+        if: success()
+        run: |
+          set -e
+          TODAY=$(date -u +"%Y-%m-%d")
+          REVIEW_FILE="review_${TODAY}.html"
+
+          # Clone orphan branch gh-pages dans un dossier temporaire
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          TMP=$(mktemp -d)
+          if git ls-remote --heads origin gh-pages | grep -q gh-pages; then
+            git clone --branch gh-pages --depth 1 \
+              "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" \
+              "$TMP"
+          else
+            git clone --depth 1 \
+              "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" \
+              "$TMP"
+            cd "$TMP"
+            git checkout --orphan gh-pages
+            git rm -rf . || true
+            cd - > /dev/null
+          fi
+
+          mkdir -p "$TMP/archive"
+          # Revue du jour -> index.html + archive/YYYY-MM-DD.html
+          cp output/"$REVIEW_FILE" "$TMP/index.html"
+          cp output/"$REVIEW_FILE" "$TMP/archive/${TODAY}.html"
+
+          # Historique (memoire inter-runs)
+          cp output/history.json "$TMP/history.json" 2>/dev/null || true
+
+          # Metadata JSON du jour
+          cp output/review_"$TODAY".meta.json "$TMP/archive/${TODAY}.meta.json" 2>/dev/null || true
+
+          # (Re)generation de la page d'archive
+          python scripts/build_archive_index.py "$TMP"
+
+          cd "$TMP"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "Aucun changement a commiter"
+          else
+            git commit -m "Revue du ${TODAY}"
+            git push origin gh-pages
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

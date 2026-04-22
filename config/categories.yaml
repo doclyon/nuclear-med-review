@@ -1,0 +1,68 @@
+# Les 10 rubriques de classement. Claude choisit la rubrique principale
+# (une seule) et peut ajouter des tags secondaires libres.
+
+categories:
+  - id: "imaging_techniques"
+    emoji: "🔬"
+    label: "Actualités & Techniques d'imagerie"
+    description: >
+      Nouvelles sequences, protocoles d'acquisition, hardware TEP/TEMP,
+      total-body PET, long axial FOV, reconstruction d'images.
+
+  - id: "theranostics"
+    emoji: "💊"
+    label: "Théranostique & Radiopharmaceutiques"
+    description: >
+      Nouveaux traceurs, essais Lu-177, Ac-225, PSMA, FAPI, DOTATATE,
+      developpement radiochimique.
+
+  - id: "oncology"
+    emoji: "🎯"
+    label: "Oncologie"
+    description: >
+      Staging, evaluation de reponse therapeutique, applications cliniques
+      oncologiques.
+
+  - id: "cardiology"
+    emoji: "🫀"
+    label: "Cardiologie nucléaire"
+    description: >
+      Perfusion, amyloidose cardiaque (DPD/PYP), sarcoidose, innervation
+      cardiaque.
+
+  - id: "neurology"
+    emoji: "🧠"
+    label: "Neurologie"
+    description: >
+      Amyloide, tau, DAT-scan, neuro-inflammation, demences, Parkinson.
+
+  - id: "dosimetry"
+    emoji: "⚙️"
+    label: "Dosimétrie & Radioprotection"
+    description: >
+      Dosimetrie interne, radioprotection, patient/personnel.
+
+  - id: "ai_radiomics"
+    emoji: "🤖"
+    label: "IA & Radiomique"
+    description: >
+      Deep learning, machine learning, segmentation, prediction de reponse.
+
+  - id: "guidelines"
+    emoji: "📋"
+    label: "Guidelines & Consensus"
+    description: >
+      Recommandations EANM, SNMMI, ESMO, ESC, procedure guidelines.
+
+  - id: "general_medicine"
+    emoji: "🌐"
+    label: "Médecine générale — articles majeurs"
+    description: >
+      Articles NEJM/JAMA/Lancet/Nature ayant un impact sur la pratique
+      medicale large.
+
+  - id: "preprints"
+    emoji: "🔭"
+    label: "Preprints à surveiller"
+    description: >
+      medRxiv/arXiv non encore peer-reviewes mais prometteurs.

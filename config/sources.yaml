@@ -1,0 +1,105 @@
+# Sources interrogees quotidiennement pour la revue de litterature.
+# Les noms de journaux PubMed doivent correspondre aux abreviations officielles
+# (champ TA - Title Abbreviation dans PubMed).
+
+pubmed:
+  # Journaux de medecine nucleaire specialisee
+  nuclear_medicine:
+    - "J Nucl Med"
+    - "Eur J Nucl Med Mol Imaging"
+    - "EJNMMI Phys"
+    - "EJNMMI Res"
+    - "Clin Nucl Med"
+    - "Nucl Med Commun"
+    - "Semin Nucl Med"
+    - "Theranostics"
+    - "J Nucl Cardiol"
+    - "Mol Imaging Biol"
+    - "Cancer Biother Radiopharm"
+
+  # Radiologie / imagerie
+  radiology:
+    - "Radiology"
+    - "Eur Radiol"
+    - "J Am Coll Radiol"
+    - "Radiographics"
+    - "Invest Radiol"
+    - "AJR Am J Roentgenol"
+    - "J Magn Reson Imaging"
+    - "Eur J Radiol"
+    - "Insights Imaging"
+
+  # Medecine generale a fort facteur d'impact
+  general_medicine:
+    - "N Engl J Med"
+    - "JAMA"
+    - "Lancet"
+    - "BMJ"
+    - "Nature"
+    - "Nat Med"
+    - "Cell"
+    - "Science"
+
+  # Oncologie
+  oncology:
+    - "J Clin Oncol"
+    - "Lancet Oncol"
+    - "Ann Oncol"
+    - "JAMA Oncol"
+    - "Cancer Cell"
+
+  # Cardiologie
+  cardiology:
+    - "Circulation"
+    - "J Am Coll Cardiol"
+    - "Eur Heart J"
+
+# Flux RSS officiels. On tente chacun, on log un warning si indisponible.
+# Ces URLs evoluent ; le fetcher est tolerant aux 404.
+rss:
+  - name: "SNMMI News"
+    url: "https://www.snmmi.org/RSS/RssFeed.aspx?ItemNumber=941"
+  - name: "EANM News"
+    url: "https://www.eanm.org/feed/"
+  - name: "AuntMinnie Molecular Imaging"
+    url: "https://www.auntminnie.com/rss/molecular-imaging"
+  - name: "JNM Current Issue"
+    url: "https://jnm.snmjournals.org/rss/current.xml"
+  - name: "EJNMMI"
+    url: "https://link.springer.com/search.rss?facet-journal-id=259"
+  - name: "Radiology"
+    url: "https://pubs.rsna.org/action/showFeed?type=etoc&feed=rss&jc=radiology"
+  - name: "Nature Medicine"
+    url: "https://www.nature.com/nm.rss"
+  - name: "NEJM"
+    url: "https://www.nejm.org/action/showFeed?type=etoc&feed=rss&jc=nejm"
+
+# arXiv : categories physique/biologie/vision par ordinateur
+arxiv:
+  categories:
+    - "physics.med-ph"
+    - "q-bio.QM"
+    - "cs.CV"
+  # Filtre post-fetch : on ne garde que les articles contenant au moins un
+  # de ces termes dans titre/abstract (pour eviter le bruit cs.CV).
+  relevance_filter:
+    - "PET"
+    - "SPECT"
+    - "nuclear medicine"
+    - "radiopharmaceutical"
+    - "theranostic"
+    - "radioligand"
+    - "radionuclide"
+    - "dosimetry"
+    - "molecular imaging"
+
+# medRxiv : sujets cibles
+medrxiv:
+  subjects:
+    - "radiology-and-imaging"
+    - "nuclear-medicine"
+
+# Parametres generaux
+window_hours: 36            # fenetre d'indexation PubMed (36h pour absorber la latence)
+per_source_timeout: 30      # secondes
+max_articles_per_source: 200
