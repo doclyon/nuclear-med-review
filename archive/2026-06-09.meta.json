@@ -1,0 +1,24 @@
+{
+  "date": "2026-06-09",
+  "n_articles": 19,
+  "n_scraped": 125,
+  "counts": {
+    "imaging_techniques": 2,
+    "theranostics": 4,
+    "oncology": 9,
+    "cardiology": 2,
+    "neurology": 2,
+    "dosimetry": 0,
+    "ai_radiomics": 0,
+    "guidelines": 0,
+    "general_medicine": 0,
+    "preprints": 0
+  },
+  "token_usage": {
+    "input_tokens": 26521,
+    "output_tokens": 8560,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 0
+  },
+  "duration_s": 48.8
+}
