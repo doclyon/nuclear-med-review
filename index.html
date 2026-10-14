@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Revue MN — 13/10/2026</title>
+<title>Revue MN — 14/10/2026</title>
 <style>
 :root {
   --bg: #0f1419;
@@ -326,45 +326,84 @@ footer code {
     <div class="hero-top">
       <div>
         <h1>🔬 Revue MN</h1>
-        <div class="date">13/10/2026</div>
+        <div class="date">14/10/2026</div>
       </div>
       <button class="theme-toggle" onclick="toggleTheme()" aria-label="Basculer mode clair/sombre">🌓 Thème</button>
     </div>
     <div class="hero-stats">
-      <span><strong>5</strong> articles retenus</span>
+      <span><strong>7</strong> articles retenus</span>
       <span><strong>4</strong> rubriques actives</span>
-      <span>~<strong>3</strong> min de lecture</span>
-      <span>83 scrapés → 5 retenus</span>
+      <span>~<strong>4</strong> min de lecture</span>
+      <span>131 scrapés → 7 retenus</span>
     </div>
   </header>
 
   <nav class="toc" aria-label="Sommaire">
     <h2>Sommaire</h2>
     <ul>
+      <li><a href="#cat-imaging_techniques">
+        <span>🔬 Actualités & Techniques d'imagerie</span>
+        <span class="count">1</span>
+      </a></li>
       <li><a href="#cat-theranostics">
         <span>💊 Théranostique & Radiopharmaceutiques</span>
-        <span class="count">1</span>
+        <span class="count">2</span>
       </a></li>
       <li><a href="#cat-oncology">
         <span>🎯 Oncologie</span>
-        <span class="count">1</span>
+        <span class="count">2</span>
       </a></li>
       <li><a href="#cat-cardiology">
         <span>🫀 Cardiologie nucléaire</span>
         <span class="count">2</span>
       </a></li>
-      <li><a href="#cat-neurology">
-        <span>🧠 Neurologie</span>
-        <span class="count">1</span>
-      </a></li>
     </ul>
   </nav>
 
+  <section class="category" id="cat-imaging_techniques">
+    <h2>
+      <span class="emoji">🔬</span>
+      <span>Actualités & Techniques d'imagerie</span>
+      <span class="count">1 article</span>
+    </h2>
+    <p class="category-desc">Nouvelles sequences, protocoles d'acquisition, hardware TEP/TEMP, total-body PET, long axial FOV, reconstruction d'images.
+</p>
+
+    <article class="article">
+      <div class="article-header">
+        <h3>
+          <a href="https://doi.org/10.1186/s13550-026-01503-y" target="_blank" rel="noopener">PET pharmacokinetics of [¹⁸F]F-AraG as a marker of T cell activation during immunotherapy with a STING agonist with and without anti-PD-1.</a>
+        </h3>
+        <p class="title-fr">Pharmacocinétique TEP du [¹⁸F]F-AraG comme marqueur d'activation des lymphocytes T sous immunothérapie par agoniste STING avec ou sans anti-PD-1</p>
+        <div class="metadata">
+          <span class="badge pubmed">PubMed</span>
+ <span>EJNMMI Res</span> <span>06/10/2026</span>          <span class="stars s2" title="Pertinence 2/3">⭐⭐</span>
+        </div>
+        <div class="authors">
+          Pouw JEE, Stavenga M, Wijngaarden JE, Oprea-Lager DE et al.        </div>
+        <div class="affiliation">Department of Medical Oncology, Amsterdam UMC location Vrije Universiteit Amsterdam, Amsterdam, Netherlands. j.e.e.pouw@amsterdamumc.nl.</div>
+      </div>
+
+      <div class="summary">
+        <dl>
+          <dt>Contexte</dt><dd>Besoin de biomarqueurs d'imagerie pour monitorer l'efficacité mécanistique de l'immunothérapie ; le [¹⁸F]F-AraG cible les lymphocytes T activés et pourrait remplir ce rôle.</dd>
+          <dt>Méthode</dt><dd>Phase 1, 4 patients avec tumeurs solides avancées traités par agoniste STING ± anti-PD-1 ; TEP/TDM [¹⁸F]F-AraG 90 min à baseline, S1 et S6 ; modélisation compartimentale (2T2K, 2T3K) avec sélection par critère AIC.</dd>
+          <dt>Résultats</dt><dd>Le modèle 2T3K irréversible est optimal dans 40/55 régions tumorales et pour la majorité des organes ; relation linéaire entre Ki/VT et métriques statiques (SUV, TBR, TPR) ; le TPR corrige le biais patient-spécifique observé avec SUV et TBR ; aucun effet du traitement détecté sur la cinétique.</dd>
+          <dt>Implication clinique</dt><dd>Pour les scans statiques au [¹⁸F]F-AraG, la normalisation par le TPR (tumor-to-plasma ratio) est à privilégier ; le modèle 2T3K constitue la référence pharmacocinétique à valider dans des cohortes plus larges.</dd>
+        </dl>
+      </div>
+
+      <div class="tags">
+<span class="tag">[¹⁸F]F-AraG</span><span class="tag">lymphocytes T activés</span><span class="tag">immunothérapie</span><span class="tag">modélisation pharmacocinétique</span><span class="tag">tumeurs solides avancées</span>      </div>
+
+      <div class="doi">DOI : <a href="https://doi.org/10.1186/s13550-026-01503-y" target="_blank" rel="noopener">10.1186/s13550-026-01503-y</a></div>
+    </article>
+  </section>
   <section class="category" id="cat-theranostics">
     <h2>
       <span class="emoji">💊</span>
       <span>Théranostique & Radiopharmaceutiques</span>
-      <span class="count">1 article</span>
+      <span class="count">2 articles</span>
     </h2>
     <p class="category-desc">Nouveaux traceurs, essais Lu-177, Ac-225, PSMA, FAPI, DOTATATE, developpement radiochimique.
 </p>
@@ -372,38 +411,63 @@ footer code {
     <article class="article">
       <div class="article-header">
         <h3>
-          <a href="https://doi.org/10.1097/MNM.0000000000002250" target="_blank" rel="noopener">A practical demand-based model for determining cyclotron irradiation time in routine 18F-FDG production.</a>
+          <a href="https://www.auntminnie.com/clinical-news/molecular-imaging/nuclear-medicine/article/15837353/lu177-pnt2002-before-sbrt-extends-disease-control-in-prostate-cancer" target="_blank" rel="noopener">Lu-177 PNT2002 before SBRT extends disease control in prostate cancer</a>
         </h3>
-        <p class="title-fr">Modèle pratique basé sur la demande pour déterminer le temps d'irradiation au cyclotron en production routinière de 18F-FDG</p>
+        <p class="title-fr">Le Lu-177 PNT2002 avant la SBRT prolonge le contrôle de la maladie dans le cancer de la prostate</p>
         <div class="metadata">
-          <span class="badge pubmed">PubMed</span>
- <span>Nucl Med Commun</span> <span>13/10/2026</span>          <span class="stars s1" title="Pertinence 1/3">⭐</span>
+          <span class="badge rss">AuntMinnie Molecular Imaging</span>
+ <span>AuntMinnie Molecular Imaging</span> <span>13/10/2026</span>          <span class="stars s2" title="Pertinence 2/3">⭐⭐</span>
         </div>
         <div class="authors">
-          Yamaguchi H        </div>
-        <div class="affiliation">Department of Radiology, Theranostics Center, Fujita Health University Hospital, Toyoake, Aichi, Japan.</div>
+          Will Morton        </div>
       </div>
 
       <div class="summary">
         <dl>
-          <dt>Contexte</dt><dd>Optimiser le temps d'irradiation cyclotron en production hospitalière de FDG pour éviter pénuries ou surproductions inutiles.</dd>
-          <dt>Méthode</dt><dd>Modèle intégrant un coefficient composite de 2,8 min/GBq de demande clinique planifiée (rendement 55%, consommation CQ 11,1%, décroissance ~30 min, facteur sécurité 1,2) ; évalué sur 516 jours consécutifs de production sur 24 mois.</dd>
-          <dt>Résultats</dt><dd>Approvisionnement suffisant en FDG pour 100% des examens planifiés (516/516 jours), sans aucune pénurie liée à une sous-estimation du temps d'irradiation.</dd>
-          <dt>Implication clinique</dt><dd>Ce modèle simple et reproductible offre un cadre pratique pour les unités de production hospitalière de FDG, garantissant la fiabilité de l'approvisionnement avec une marge de sécurité intégrée.</dd>
+          <dt>Contexte</dt><dd>Évaluer l'intérêt de combiner la radioligandthérapie Lu-177 PNT2002 (anti-PSMA) avec la SBRT dans le cancer de la prostate, dans le cadre de l'essai LUNAR.</dd>
+          <dt>Méthode</dt><dd>Mise à jour d'analyse de l'essai LUNAR (UCLA) avec un suivi prolongé de 10 mois supplémentaires ; population de patients atteints de cancer de la prostate traités par Lu-177 PNT2002 avant SBRT.</dd>
+          <dt>Résultats</dt><dd>La mise à jour confirme une prolongation du contrôle de la maladie, sans chiffres précis disponibles dans cet abstract résumé.</dd>
+          <dt>Implication clinique</dt><dd>Approche combinée radioligandthérapie PSMA + SBRT potentiellement prometteuse ; données de suivi renforcées mais publication complète nécessaire pour évaluation définitive.</dd>
         </dl>
       </div>
 
       <div class="tags">
-<span class="tag">18F-FDG</span><span class="tag">cyclotron</span><span class="tag">production radiopharmaceutique</span><span class="tag">planification</span><span class="tag">contrôle qualité</span>      </div>
+<span class="tag">Lu-177</span><span class="tag">PSMA</span><span class="tag">cancer prostate</span><span class="tag">SBRT</span><span class="tag">LUNAR trial</span>      </div>
 
-      <div class="doi">DOI : <a href="https://doi.org/10.1097/MNM.0000000000002250" target="_blank" rel="noopener">10.1097/MNM.0000000000002250</a></div>
+    </article>
+    <article class="article">
+      <div class="article-header">
+        <h3>
+          <a href="https://www.auntminnie.com/clinical-news/molecular-imaging/article/15837390/molecular-imaging-insider" target="_blank" rel="noopener">AuntMinnie.com Molecular Imaging Insider</a>
+        </h3>
+        <p class="title-fr">Newsletter AuntMinnie : Imagerie Moléculaire — Analyse secondaire de l'essai LUNAR avec Lu-177 PNT2002</p>
+        <div class="metadata">
+          <span class="badge rss">AuntMinnie Molecular Imaging</span>
+ <span>AuntMinnie Molecular Imaging</span> <span>13/10/2026</span>          <span class="stars s1" title="Pertinence 1/3">⭐</span>
+        </div>
+        <div class="authors">
+          Will Morton        </div>
+      </div>
+
+      <div class="summary">
+        <dl>
+          <dt>Contexte</dt><dd>Newsletter de veille en imagerie moléculaire résumant une analyse secondaire de l'essai LUNAR portant sur le Lu-177 PNT2002 dans le cancer de la prostate.</dd>
+          <dt>Méthode</dt><dd>Article de presse/newsletter sans design d'étude propre ; synthèse journalistique d'une analyse secondaire de l'essai LUNAR.</dd>
+          <dt>Résultats</dt><dd>L'abstract tronqué ne fournit pas de chiffres exploitables au-delà de la mention de bénéfices associés au Lu-177 PNT2002.</dd>
+          <dt>Implication clinique</dt><dd>À lire pour la veille de l'actualité théranostique, mais sans valeur scientifique primaire ; il convient de consulter la publication source de l'analyse secondaire LUNAR.</dd>
+        </dl>
+      </div>
+
+      <div class="tags">
+<span class="tag">Lu-177</span><span class="tag">PSMA</span><span class="tag">cancer prostate</span><span class="tag">LUNAR trial</span><span class="tag">théranostique</span>      </div>
+
     </article>
   </section>
   <section class="category" id="cat-oncology">
     <h2>
       <span class="emoji">🎯</span>
       <span>Oncologie</span>
-      <span class="count">1 article</span>
+      <span class="count">2 articles</span>
     </h2>
     <p class="category-desc">Staging, evaluation de reponse therapeutique, applications cliniques oncologiques.
 </p>
@@ -411,31 +475,60 @@ footer code {
     <article class="article">
       <div class="article-header">
         <h3>
-          <a href="https://doi.org/10.1097/MNM.0000000000002248" target="_blank" rel="noopener">The impact and value of [18F]-FDG PET-CT on management of patients with cervical cancer with service evaluation audited against national evidence-based PET-CT guidelines.</a>
+          <a href="https://doi.org/10.1148/radiol.261188" target="_blank" rel="noopener">Association of PET/CT Metabolic Parameters with Histologic Grade of Lung Adenocarcinoma: Implications for Surgical Decisions.</a>
         </h3>
-        <p class="title-fr">Impact et valeur de la TEP-TDM au [18F]-FDG dans la prise en charge du cancer du col utérin : audit par rapport aux recommandations nationales</p>
+        <p class="title-fr">Association des paramètres métaboliques TEP/TDM avec le grade histologique de l'adénocarcinome pulmonaire : implications pour les décisions chirurgicales</p>
         <div class="metadata">
           <span class="badge pubmed">PubMed</span>
- <span>Nucl Med Commun</span> <span>13/10/2026</span>          <span class="stars s1" title="Pertinence 1/3">⭐</span>
+ <span>Radiology</span> <span>01/10/2026</span>          <span class="stars s3" title="Pertinence 3/3">⭐⭐⭐</span>
         </div>
         <div class="authors">
-          Elsewafy M, Knox N, Punchihewa C, Amro S et al.        </div>
-        <div class="affiliation">Nuclear Medicine Department, University Hospitals Sussex NHS Foundation Trust, Royal Sussex County Hospital.</div>
+          Shen X, Shi H, Wan Z, Yang M et al.        </div>
+        <div class="affiliation">Department of Thoracic Surgery, Shanghai Pulmonary Hospital, Tongji University School of Medicine, Shanghai 200433, China.</div>
       </div>
 
       <div class="summary">
         <dl>
-          <dt>Contexte</dt><dd>Évaluer la valeur diagnostique de la TEP-TDM au FDG vs imagerie conventionnelle (IRM/TDM) et auditer la conformité des indications aux recommandations RCR/RCP 2022 dans le cancer du col utérin.</dd>
-          <dt>Méthode</dt><dd>Cohorte rétrospective monocentrique, 49 patientes avec cancer du col prouvé histologiquement, 59 TEP-TDM au [18F]-FDG comparées aux TDM/IRM réalisées dans les 4 mois précédents (Sussex Cancer Network, 2020-2022).</dd>
-          <dt>Résultats</dt><dd>Nouveaux sites métastatiques identifiés dans 16/59 scans (27,1%) ; 57/59 scans (96,6%) conformes aux recommandations ; modification du plan thérapeutique dans 5/59 cas (8,4%), confirmation dans 48/59 (81,4%).</dd>
-          <dt>Implication clinique</dt><dd>La TEP-TDM au FDG apporte une valeur ajoutée diagnostique réelle vs imagerie conventionnelle dans le cancer du col, mais son impact sur la décision thérapeutique reste modeste (8,4%) ; étude de faible effectif limitant la portée des conclusions.</dd>
+          <dt>Contexte</dt><dd>Le grade IASLC des adénocarcinomes pulmonaires invasifs est validé pronostiquement, mais la valeur du SUVmax en TEP/TDM pour guider les décisions chirurgicales au stade IA clinique reste inconnue.</dd>
+          <dt>Méthode</dt><dd>Étude rétrospective monocentrique (n=2789, âge médian 62 ans, 56% femmes), adénocarcinomes pulmonaires cIA réséqués entre 09/2020 et 03/2022 ; régression logistique, Cox multivariable et appariement par score de propension.</dd>
+          <dt>Résultats</dt><dd>SUVmax prédit le grade 3 IASLC avec des seuils distincts : 4,25 (nodules pur solide) et 2,30 (nodules subsolides) ; AUC 0,72–0,74 en cohorte externe. Pour les nodules purs solides hyperméta­boliques (SUVmax>4,25), la ségmentectomie et la dissection ganglionnaire limitée sont associées à une survie globale inférieure (HR=2,06, p=0,03 et p=0,005 respectivement).</dd>
+          <dt>Implication clinique</dt><dd>Le SUVmax en TEP/TDM permet d'identifier les patients à haut risque (grade 3) pour lesquels une lobectomie avec dissection ganglionnaire complète reste impérative, évitant de proposer une chirurgie sous-optimale sur la seule base du stade radiologique IA.</dd>
         </dl>
       </div>
 
       <div class="tags">
-<span class="tag">cancer du col utérin</span><span class="tag">18F-FDG</span><span class="tag">TEP-TDM</span><span class="tag">staging</span><span class="tag">évaluation de réponse</span>      </div>
+<span class="tag">adénocarcinome pulmonaire</span><span class="tag">TEP/TDM</span><span class="tag">SUVmax</span><span class="tag">grade IASLC</span><span class="tag">chirurgie thoracique</span>      </div>
 
-      <div class="doi">DOI : <a href="https://doi.org/10.1097/MNM.0000000000002248" target="_blank" rel="noopener">10.1097/MNM.0000000000002248</a></div>
+      <div class="doi">DOI : <a href="https://doi.org/10.1148/radiol.261188" target="_blank" rel="noopener">10.1148/radiol.261188</a></div>
+    </article>
+    <article class="article">
+      <div class="article-header">
+        <h3>
+          <a href="https://doi.org/10.1007/s00330-026-12954-1" target="_blank" rel="noopener">Restaging the primary tumor in localized pancreatic ductal adenocarcinoma after systemic therapy: a scoping review of the role of CT, FDG-PET, and CA19-9.</a>
+        </h3>
+        <p class="title-fr">Restaging de la tumeur primitive dans l'adénocarcinome pancréatique localisé après traitement systémique : revue de la littérature sur le rôle du CT, du TEP-FDG et du CA19-9</p>
+        <div class="metadata">
+          <span class="badge pubmed">PubMed</span>
+ <span>Eur Radiol</span> <span>13/10/2026</span>          <span class="stars s2" title="Pertinence 2/3">⭐⭐</span>
+        </div>
+        <div class="authors">
+          Lamoré AM, Kop MPM, Zamboni GA, Zins M et al.        </div>
+        <div class="affiliation">Department of Radiology and Nuclear Medicine, Amsterdam UMC, Location University of Amsterdam, Amsterdam, The Netherlands. a.m.lamore@amsterdamUMC.nl.</div>
+      </div>
+
+      <div class="summary">
+        <dl>
+          <dt>Contexte</dt><dd>L'essor des polychimiothérapies dans le PDAC localisé rend le restaging plus complexe ; l'efficacité des méthodes actuelles (CT, TEP/CT, CA19-9) pour prédire la résécabilité et la survie reste mal définie.</dd>
+          <dt>Méthode</dt><dd>Revue de portée (scoping review) : 4680 études identifiées (MEDLINE, Embase, CENTRAL), 20 retenues — 15 sur CT, 5 sur TEP/CT ; critères d'évaluation : résécabilité R0, survie globale.</dd>
+          <dt>Résultats</dt><dd>Aucune méthode de restaging ne montre d'association constante avec le taux de résection R0 ET la survie. RECIST 1.1 est particulièrement limité pour classer réponse partielle et maladie stable. Le DECT-ECV est évalué comme biomarqueur prédictif basal.</dd>
+          <dt>Implication clinique</dt><dd>L'intégration de paramètres métaboliques TEP (SUV, MTV, TLG), de caractéristiques CT additionnelles et du CA19-9 est nécessaire pour améliorer le restaging ; une révision de RECIST 1.1 spécifique au PDAC est suggérée.</dd>
+        </dl>
+      </div>
+
+      <div class="tags">
+<span class="tag">adénocarcinome pancréatique</span><span class="tag">FDG-PET</span><span class="tag">restaging</span><span class="tag">RECIST</span><span class="tag">résécabilité</span>      </div>
+
+      <div class="doi">DOI : <a href="https://doi.org/10.1007/s00330-026-12954-1" target="_blank" rel="noopener">10.1007/s00330-026-12954-1</a></div>
     </article>
   </section>
   <section class="category" id="cat-cardiology">
@@ -450,109 +543,70 @@ footer code {
     <article class="article">
       <div class="article-header">
         <h3>
-          <a href="https://doi.org/10.1016/j.nuclcard.2026.103000" target="_blank" rel="noopener">Investigation of CardioFreeze Motion Correction for Cardiac PET/CT.</a>
+          <a href="https://doi.org/10.1016/j.nuclcard.2026.102963" target="_blank" rel="noopener">Will inflammation return? Using serial 18F-fluorodeoxyglucose positron emission tomography/computed tomography to predict relapse in cardiac sarcoidosis.</a>
         </h3>
-        <p class="title-fr">Évaluation de la correction de mouvement CardioFreeze pour la TEP/TDM cardiaque</p>
+        <p class="title-fr">L'inflammation va-t-elle réapparaître ? Utilisation de la TEP/TDM au 18F-FDG en série pour prédire la rechute dans la sarcoïdose cardiaque</p>
         <div class="metadata">
           <span class="badge pubmed">PubMed</span>
- <span>J Nucl Cardiol</span> <span>12/10/2026</span>          <span class="stars s2" title="Pertinence 2/3">⭐⭐</span>
+ <span>J Nucl Cardiol</span> <span>01/09/2026</span>          <span class="stars s2" title="Pertinence 2/3">⭐⭐</span>
         </div>
         <div class="authors">
-          Wang AR, Guo L, Fazzone-Chettiar R, Weyman CA et al.        </div>
-        <div class="affiliation">Section of Cardiovascular Medicine, Department of Internal Medicine, Yale School of Medicine, New Haven, CT, USA.</div>
+          Wiefels C, Divakaran S        </div>
+        <div class="affiliation">Division of Nuclear Medicine and Division of Cardiology, Department of Medicine, University of Ottawa, Ottawa, Canada.</div>
       </div>
 
       <div class="summary">
         <dl>
-          <dt>Contexte</dt><dd>Le mouvement cardiaque et respiratoire dégrade la qualité des images en TEP/TDM cardiaque, pouvant induire des artefacts à impact clinique sur la perfusion myocardique au Rb-82.</dd>
-          <dt>Méthode</dt><dd>Étude rétrospective monocentrique (n=102 patients, TEP/TDM Rb-82 repos/effort), utilisant un algorithme prototype de détection de mouvement et un outil de correction cardiaque seule (CS) ou cardio-respiratoire combinée (CD) ; qualité évaluée par le rapport cible/bruit (TBR).</dd>
-          <dt>Résultats</dt><dd>35,3% des patients présentaient un mouvement significatif. La correction CS augmente le TBR moyen à 3,65±0,07 (p<0,01), amplifiée avec CD à 3,78±0,07 (p<0,005) ; gain de TBR >10% dans les cas à mouvement significatif vs 3% sans mouvement notable. Chez 7 patients avec mouvement significatif ayant eu une coronarographie, CD restaure une qualité image comparable aux patients sans mouvement.</dd>
-          <dt>Implication clinique</dt><dd>La correction combinée cardio-respiratoire améliore significativement la qualité des images TEP myocardiques chez plus d'1/3 des patients ; son intégration systématique en protocole clinique mérite d'être évaluée sur des critères diagnostiques durs.</dd>
+          <dt>Contexte</dt><dd>La sarcoïdose cardiaque est une pathologie inflammatoire grave dont la rechute après traitement reste difficile à anticiper ; la TEP/TDM au FDG pourrait permettre une surveillance longitudinale.</dd>
+          <dt>Méthode</dt><dd>Étude utilisant des TEP/TDM au 18F-FDG réalisées en série chez des patients atteints de sarcoïdose cardiaque pour évaluer leur valeur prédictive de rechute — design et effectif non précisés (abstract indisponible).</dd>
+          <dt>Résultats</dt><dd>Données chiffrées non disponibles (abstract absent).</dd>
+          <dt>Implication clinique</dt><dd>Si confirmée, la TEP/TDM sérielle au FDG pourrait guider la durée du traitement immunosuppresseur et le rythme de surveillance dans la sarcoïdose cardiaque.</dd>
         </dl>
       </div>
 
       <div class="tags">
-<span class="tag">TEP/TDM cardiaque</span><span class="tag">Rb-82</span><span class="tag">perfusion myocardique</span><span class="tag">correction de mouvement</span><span class="tag">qualité image</span>      </div>
+<span class="tag">sarcoïdose cardiaque</span><span class="tag">18F-FDG</span><span class="tag">TEP/TDM</span><span class="tag">rechute</span><span class="tag">suivi sériel</span>      </div>
 
-      <div class="doi">DOI : <a href="https://doi.org/10.1016/j.nuclcard.2026.103000" target="_blank" rel="noopener">10.1016/j.nuclcard.2026.103000</a></div>
+      <div class="doi">DOI : <a href="https://doi.org/10.1016/j.nuclcard.2026.102963" target="_blank" rel="noopener">10.1016/j.nuclcard.2026.102963</a></div>
     </article>
     <article class="article">
       <div class="article-header">
         <h3>
-          <a href="https://doi.org/10.1097/MNM.0000000000002246" target="_blank" rel="noopener">Relationship between extent of jeopardized myocardium derived from myocardial viability study to post-myocardial infarction outcome.</a>
+          <a href="https://doi.org/10.1016/j.nuclcard.2026.102961" target="_blank" rel="noopener">Unmasking residual risk: The incremental value of the hemodynamic gain index in exercise single-photon emission computed tomography myocardial perfusion imaging.</a>
         </h3>
-        <p class="title-fr">Relation entre l'étendue du myocarde en danger quantifiée par l'étude de viabilité et le pronostic post-infarctus</p>
+        <p class="title-fr">Démasquer le risque résiduel : valeur incrémentielle de l'index de gain hémodynamique en scintigraphie myocardique de perfusion TEMP à l'effort</p>
         <div class="metadata">
           <span class="badge pubmed">PubMed</span>
- <span>Nucl Med Commun</span> <span>13/10/2026</span>          <span class="stars s2" title="Pertinence 2/3">⭐⭐</span>
+ <span>J Nucl Cardiol</span> <span>01/09/2026</span>          <span class="stars s1" title="Pertinence 1/3">⭐</span>
         </div>
         <div class="authors">
-          Garg G, Kalshetty A, Basu S        </div>
-        <div class="affiliation">Radiation Medicine Centre, Bhabha Atomic Research Centre, Tata Memorial Hospital Annexe.</div>
+          Brar A, Hulten EA        </div>
+        <div class="affiliation">Department of Cardiovascular Medicine, Brown University Health- Rhode Island Hospital, Providence, RI, USA. Electronic address: abrar@brownhealth.org.</div>
       </div>
 
       <div class="summary">
         <dl>
-          <dt>Contexte</dt><dd>La viabilité myocardique par TEP-FDG guide les décisions de revascularisation post-IDM, mais la valeur prédictive des paramètres quantitatifs sur la récupération fonctionnelle et le pronostic reste à préciser.</dd>
-          <dt>Méthode</dt><dd>Étude prospective, 85 patients post-IDM, scintigraphie de perfusion au repos (2 jours) + TEP-FDG cardiaque analysées par Emory Cardiac Toolbox v4.2 ; suivi échocardiographique à 3, 6 et 12 mois ; critère de récupération : ΔFEVg ≥ 5%.</dd>
-          <dt>Résultats</dt><dd>L'étendue du myocarde viable prédit la récupération fonctionnelle avec AUC = 0,762 (p < 0,001) ; seuil ~17% : Se 76,7%, Sp 68,8%, précision 71,8%. MACE survenu chez 16% des patients, sans corrélation significative avec les paramètres d'imagerie.</dd>
-          <dt>Implication clinique</dt><dd>Un seuil de myocarde viable ≥ 17% identifie les patients susceptibles de récupérer une fonction VG après revascularisation ; la TEP-FDG reste pertinente pour orienter la décision thérapeutique, mais l'effectif limité (n=85) restreint la portée sur les MACE.</dd>
+          <dt>Contexte</dt><dd>L'index de gain hémodynamique (HGI) intègre la réponse de la fréquence cardiaque et de la pression artérielle à l'effort ; son apport pronostique incrémentiel en TEMP de perfusion myocardique reste à préciser.</dd>
+          <dt>Méthode</dt><dd>Article publié dans le Journal of Nuclear Cardiology, design et population non précisables (abstract indisponible) ; évaluation du HGI couplée à la scintigraphie myocardique de perfusion TEMP d'effort.</dd>
+          <dt>Résultats</dt><dd>Données chiffrées non disponibles (abstract absent).</dd>
+          <dt>Implication clinique</dt><dd>Potentiel intérêt du HGI comme marqueur complémentaire en TEMP d'effort pour stratifier le risque résiduel, mais les conclusions restent invérifiables sans abstract.</dd>
         </dl>
       </div>
 
       <div class="tags">
-<span class="tag">viabilité myocardique</span><span class="tag">FDG-PET/CT</span><span class="tag">infarctus du myocarde</span><span class="tag">perfusion myocardique</span><span class="tag">FEVG</span>      </div>
+<span class="tag">scintigraphie myocardique</span><span class="tag">TEMP</span><span class="tag">index de gain hémodynamique</span><span class="tag">perfusion</span><span class="tag">risque cardiovasculaire</span>      </div>
 
-      <div class="doi">DOI : <a href="https://doi.org/10.1097/MNM.0000000000002246" target="_blank" rel="noopener">10.1097/MNM.0000000000002246</a></div>
-    </article>
-  </section>
-  <section class="category" id="cat-neurology">
-    <h2>
-      <span class="emoji">🧠</span>
-      <span>Neurologie</span>
-      <span class="count">1 article</span>
-    </h2>
-    <p class="category-desc">Amyloide, tau, DAT-scan, neuro-inflammation, demences, Parkinson.
-</p>
-
-    <article class="article">
-      <div class="article-header">
-        <h3>
-          <a href="https://doi.org/10.1161/CIRCULATIONAHA.126.082400" target="_blank" rel="noopener">Molecular Imaging of Thrombotic Sources of Ischemic Stroke.</a>
-        </h3>
-        <p class="title-fr">Imagerie moléculaire des sources thrombotiques des AVC ischémiques</p>
-        <div class="metadata">
-          <span class="badge pubmed">PubMed</span>
- <span>Circulation</span> <span>13/10/2026</span>          <span class="stars s2" title="Pertinence 2/3">⭐⭐</span>
-        </div>
-        <div class="authors">
-          Bellinge JW, Hankey GJ        </div>
-        <div class="affiliation">Medical School and Western Australian Node of the National Imaging Facility (J.W.B.), University of Western Australia, Perth, WA, Australia.</div>
-      </div>
-
-      <div class="summary">
-        <dl>
-          <dt>Contexte</dt><dd>Les AVC ischémiques restent fréquemment cryptogéniques ; l'imagerie moléculaire pourrait permettre d'identifier et de caractériser les sources thrombotiques (plaque carotidienne, thrombus cardiaque, fibrillation atriale).</dd>
-          <dt>Méthode</dt><dd>Article de revue publié dans Circulation, sans abstract disponible — synthèse des applications de l'imagerie moléculaire (TEP/TEMP, traceurs ciblant la thrombose, l'inflammation de plaque) dans le bilan étiologique des AVC ischémiques.</dd>
-          <dt>Résultats</dt><dd>Données chiffrées non disponibles en l'absence d'abstract ; revue narrative des traceurs et techniques en développement ou en évaluation clinique.</dd>
-          <dt>Implication clinique</dt><dd>Perspective d'intégration de traceurs moléculaires (ciblant fibrine, plaquettes, macrophages de plaque) dans le bilan AVC pour guider la prévention secondaire personnalisée.</dd>
-        </dl>
-      </div>
-
-      <div class="tags">
-<span class="tag">AVC ischémique</span><span class="tag">thrombose</span><span class="tag">imagerie moléculaire</span><span class="tag">plaque athéromateuse</span><span class="tag">cardioembolisme</span>      </div>
-
-      <div class="doi">DOI : <a href="https://doi.org/10.1161/CIRCULATIONAHA.126.082400" target="_blank" rel="noopener">10.1161/CIRCULATIONAHA.126.082400</a></div>
+      <div class="doi">DOI : <a href="https://doi.org/10.1016/j.nuclcard.2026.102961" target="_blank" rel="noopener">10.1016/j.nuclcard.2026.102961</a></div>
     </article>
   </section>
 
 
   <footer>
     <p><strong>Sources interrogées :</strong> PubMed (journaux cibles), RSS officiels (SNMMI, EANM, AuntMinnie, journaux), arXiv (physics.med-ph, q-bio.QM, cs.CV), medRxiv.</p>
-    <p><strong>Exécution :</strong> 2026-10-13T10:15:25.113956+00:00 · durée ?s · fenêtre 36h</p>
+    <p><strong>Exécution :</strong> 2026-10-14T08:28:58.516054+00:00 · durée ?s · fenêtre 36h</p>
     <p><strong>Coût Claude :</strong>
-      7306 tokens in ·
-      2264 tokens out ·
+      13110 tokens in ·
+      3262 tokens out ·
       0 cache read
     </p>
     <p>Généré par <code>nuclear-med-review v1.0.0</code></p>
