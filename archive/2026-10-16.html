@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Revue MN — 16/10/2026</title>
+<style>
+:root {
+  --bg: #0f1419;
+  --bg-card: #1a1f26;
+  --bg-card-hover: #212832;
+  --border: #2a3340;
+  --text: #e6edf3;
+  --text-muted: #9aa8b5;
+  --text-dim: #6b7887;
+  --accent: #4aa3df;
+  --accent-hover: #6bb8e8;
+  --star: #f5c842;
+  --strong: #ff6b6b;
+  --radius: 10px;
+  --shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+[data-theme="light"] {
+  --bg: #f8fafb;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f0f4f7;
+  --border: #d8dee4;
+  --text: #1a1f26;
+  --text-muted: #4a5864;
+  --text-dim: #78848f;
+  --accent: #2b7cb8;
+  --accent-hover: #1e5a87;
+  --star: #d4a017;
+  --shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  background: var(--bg);
+  color: var(--text);
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+.container {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 24px 20px 80px;
+}
+header.hero {
+  padding: 20px 0 24px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 24px;
+}
+.hero-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+.date {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+.theme-toggle {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 6px 12px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+.theme-toggle:hover { background: var(--bg-card-hover); }
+.hero-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-top: 10px;
+}
+.hero-stats strong { color: var(--text); font-weight: 600; }
+
+/* Sommaire */
+.toc {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  margin-bottom: 32px;
+}
+.toc h2 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-dim);
+  margin: 0 0 12px;
+  font-weight: 600;
+}
+.toc ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 6px;
+}
+.toc a {
+  color: var(--text);
+  text-decoration: none;
+  padding: 6px 8px;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.92rem;
+}
+.toc a:hover { background: var(--bg-card-hover); color: var(--accent); }
+.toc .count {
+  color: var(--text-dim);
+  font-size: 0.8rem;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Categories */
+.category {
+  margin-bottom: 40px;
+  scroll-margin-top: 20px;
+}
+.category h2 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0 0 4px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--accent);
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+.category h2 .emoji { font-size: 1.3rem; }
+.category h2 .count {
+  color: var(--text-dim);
+  font-size: 0.85rem;
+  font-weight: 400;
+  margin-left: auto;
+}
+.category-desc {
+  color: var(--text-dim);
+  font-size: 0.85rem;
+  margin: 0 0 16px;
+  font-style: italic;
+}
+
+/* Cartes articles */
+.article {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  margin-bottom: 14px;
+  transition: background 0.15s, transform 0.15s;
+  box-shadow: var(--shadow);
+}
+.article:hover {
+  background: var(--bg-card-hover);
+  transform: translateY(-1px);
+}
+.article-header {
+  margin-bottom: 10px;
+}
+.article h3 {
+  font-size: 1rem;
+  margin: 0 0 4px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+.article h3 a {
+  color: var(--text);
+  text-decoration: none;
+}
+.article h3 a:hover { color: var(--accent); }
+.title-fr {
+  font-style: italic;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin: 0 0 8px;
+  line-height: 1.4;
+}
+.metadata {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+  align-items: center;
+}
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+.badge.pubmed { background: #1e4976; color: #a8d4f0; }
+.badge.rss { background: #6b3e1a; color: #f2c68a; }
+.badge.arxiv { background: #5c1a4a; color: #e8a8d4; }
+.badge.medrxiv { background: #1a5c3d; color: #a8e8c8; }
+[data-theme="light"] .badge.pubmed { background: #d4e8f7; color: #1e4976; }
+[data-theme="light"] .badge.rss { background: #f7e3c8; color: #6b3e1a; }
+[data-theme="light"] .badge.arxiv { background: #f7d4ec; color: #5c1a4a; }
+[data-theme="light"] .badge.medrxiv { background: #d4f0df; color: #1a5c3d; }
+
+.stars {
+  color: var(--star);
+  letter-spacing: 2px;
+  font-size: 0.95rem;
+}
+.stars.s3 { font-weight: 700; }
+
+.authors {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  margin-bottom: 4px;
+}
+.affiliation {
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  font-style: italic;
+  margin-bottom: 12px;
+}
+
+/* Resume structure */
+.summary {
+  background: rgba(74,163,223,0.05);
+  border-left: 3px solid var(--accent);
+  padding: 12px 14px;
+  border-radius: 0 6px 6px 0;
+  margin: 10px 0;
+}
+.summary dl { margin: 0; }
+.summary dt {
+  font-weight: 600;
+  color: var(--accent);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-top: 8px;
+}
+.summary dt:first-child { margin-top: 0; }
+.summary dd {
+  margin: 2px 0 6px;
+  font-size: 0.93rem;
+  line-height: 1.55;
+}
+.summary dd:last-child { margin-bottom: 0; }
+
+/* Tags */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+}
+.tag {
+  background: var(--border);
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+.doi {
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  margin-top: 8px;
+  word-break: break-all;
+}
+.doi a { color: var(--accent); text-decoration: none; }
+.doi a:hover { text-decoration: underline; }
+
+/* Footer */
+footer {
+  margin-top: 60px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  font-size: 0.78rem;
+  color: var(--text-dim);
+}
+footer p { margin: 4px 0; }
+footer code {
+  background: var(--bg-card);
+  padding: 1px 5px;
+  border-radius: 4px;
+}
+
+/* Empty state */
+.empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-muted);
+}
+
+@media (max-width: 600px) {
+  .container { padding: 16px 14px 60px; }
+  h1 { font-size: 1.25rem; }
+  .article { padding: 14px 16px; }
+  .toc ul { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <header class="hero">
+    <div class="hero-top">
+      <div>
+        <h1>🔬 Revue MN</h1>
+        <div class="date">16/10/2026</div>
+      </div>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Basculer mode clair/sombre">🌓 Thème</button>
+    </div>
+    <div class="hero-stats">
+      <span><strong>10</strong> articles retenus</span>
+      <span><strong>4</strong> rubriques actives</span>
+      <span>~<strong>6</strong> min de lecture</span>
+      <span>232 scrapés → 10 retenus</span>
+    </div>
+  </header>
+
+  <nav class="toc" aria-label="Sommaire">
+    <h2>Sommaire</h2>
+    <ul>
+      <li><a href="#cat-imaging_techniques">
+        <span>🔬 Actualités & Techniques d'imagerie</span>
+        <span class="count">2</span>
+      </a></li>
+      <li><a href="#cat-theranostics">
+        <span>💊 Théranostique & Radiopharmaceutiques</span>
+        <span class="count">6</span>
+      </a></li>
+      <li><a href="#cat-oncology">
+        <span>🎯 Oncologie</span>
+        <span class="count">1</span>
+      </a></li>
+      <li><a href="#cat-ai_radiomics">
+        <span>🤖 IA & Radiomique</span>
+        <span class="count">1</span>
+      </a></li>
+    </ul>
+  </nav>
+
+  <section class="category" id="cat-imaging_techniques">
+    <h2>
+      <span class="emoji">🔬</span>
+      <span>Actualités & Techniques d'imagerie</span>
+      <span class="count">2 articles</span>
+    </h2>
+    <p class="category-desc">Nouvelles sequences, protocoles d'acquisition, hardware TEP/TEMP, total-body PET, long axial FOV, reconstruction d'images.
+</p>
+
+    <article class="article">
+      <div class="article-header">
+        <h3>
+          <a href="https://doi.org/10.2967/jnumed.125.271971" target="_blank" rel="noopener">Design and Development of NeuroSphere PET: A Next-Generation 7-T MR-Compatible Dedicated Brain PET Scanner.</a>
+        </h3>
+        <p class="title-fr">Conception et développement du NeuroSphere PET : un scanner TEP dédié au cerveau, compatible IRM 7 T, de nouvelle génération</p>
+        <div class="metadata">
+          <span class="badge pubmed">PubMed</span>
+ <span>J Nucl Med</span> <span>15/10/2026</span>          <span class="stars s3" title="Pertinence 3/3">⭐⭐⭐</span>
+        </div>
+        <div class="authors">
+          Scipioni M, Byars L, Allen MS, Corbeil J et al.        </div>
+        <div class="affiliation">Athinoula A. Martinos Center for Biomedical Imaging, Radiology Department, Massachusetts General Hospital, Harvard Medical School, Boston, Massachusetts.</div>
+      </div>
+
+      <div class="summary">
+        <dl>
+          <dt>Contexte</dt><dd>La résolution temporelle des scanners TEP cérébraux commerciaux reste limitée par leur faible sensibilité (~4-5%), contraignant l'étude des processus neurochimiques rapides ; un système TEP dédié ultra-sensible couplé à l'IRM 7T est développé pour combler ce manque.</dd>
+          <dt>Méthode</dt><dd>Article de conception d'ingénierie : description du prototype NeuroSphere PET (diamètre interne 32 cm, couverture d'angle solide 70%, 872 blocs LSO 26 mm couplés à des SiPM avec capacité DOI), intégré dans un Siemens Magnetom Terra.X 7T ; performances estimées par simulations Monte Carlo ultrarapides (fantôme Derenzo, sphère uniforme 30 cm).</dd>
+          <dt>Résultats</dt><dd>Sensibilité de pointe ~38%, moyenne cerveau entier >25% (vs ~4-5% commercial) ; résolution spatiale 1,6 mm au centre, <2 mm en cortex ; résolution en coïncidence ~500 ps FWHM, résolution DOI ~8 mm FWHM, résolution en énergie ~11% FWHM.</dd>
+          <dt>Implication clinique</dt><dd>Gain de sensibilité d'un ordre de grandeur par rapport aux systèmes commerciaux, ouvrant la voie à des études neurochimiques dynamiques simultanées TEP/IRM 7T à résolution spatiotemporelle sans précédent ; impact potentiel majeur pour la neuroscience translationnelle et pharmacologique.</dd>
+        </dl>
+      </div>
+
+      <div class="tags">
+<span class="tag">TEP cérébral dédié</span><span class="tag">TEP/IRM 7T</span><span class="tag">haute sensibilité</span><span class="tag">résolution spatiotemporelle</span><span class="tag">LSO-SiPM</span>      </div>
+
+      <div class="doi">DOI : <a href="https://doi.org/10.2967/jnumed.125.271971" target="_blank" rel="noopener">10.2967/jnumed.125.271971</a></div>
+    </article>
+    <article class="article">
+      <div class="article-header">
+        <h3>
+          <a href="https://doi.org/10.2967/jnumed.126.272891" target="_blank" rel="noopener">Test-Retest Repeatability of [</a>
+        </h3>
+        <p class="title-fr">Répétabilité test-retest du [18F]FDG en TEP/IRM : étude multicentrique prospective sur différents types de cancers</p>
+        <div class="metadata">
+          <span class="badge pubmed">PubMed</span>
+ <span>J Nucl Med</span> <span>15/10/2026</span>          <span class="stars s2" title="Pertinence 2/3">⭐⭐</span>
+        </div>
+        <div class="authors">
+          Fraum TJ, Calderara G, An H, Mahdjoub H et al.        </div>
+        <div class="affiliation">Mallinckrodt Institute of Radiology, Washington University School of Medicine, Saint Louis, Missouri; and fraumt@wustl.edu.</div>
+      </div>
+
+      <div class="summary">
+        <dl>
+          <dt>Contexte</dt><dd>La répétabilité des métriques de captation en TEP/IRM [18F]FDG reste mal établie, les études antérieures étant limitées par des effectifs réduits ou des designs monocentriques ; question clé pour valider les biomarqueurs quantitatifs.</dd>
+          <dt>Méthode</dt><dd>Étude prospective bicentrique (2 modèles de scanner TEP/IRM différents) ; 21 patients avec lésions mesurables (grand axe ≥ 2 cm, SUVmax attendu ≥ 4), 2 examens TEP/IRM [18F]FDG à 1–9 jours d'intervalle selon les spécifications QIBA ; extraction de SUVmax et SUVpeak sur 1–5 lésions/patient ; analyse de l'impact de la variabilité intersession des μ-maps.</dd>
+          <dt>Résultats</dt><dd>Site 1 (11 lésions) : wCV SUVmax = 12,3 %, wCV SUVpeak = 9,6 % ; site 2 (30 lésions) : wCV SUVmax = 9,5 %, wCV SUVpeak = 8,8 % ; la substitution de μ-map réduisait le wCV SUVmax à 10,1 % au site 1 ; impact μ-map < 5 % de variation pour 8/11 lésions.</dd>
+          <dt>Implication clinique</dt><dd>La répétabilité du SUVmax en TEP/IRM [18F]FDG est comparable au benchmark QIBA de la TEP/TDM (wCV 10–12 %), et les variations intersession de correction d'atténuation IRM ont un impact minimal ; la TEP/IRM peut être considérée comme fiable pour le suivi oncologique quantitatif.</dd>
+        </dl>
+      </div>
+
+      <div class="tags">
+<span class="tag">18F-FDG</span><span class="tag">TEP/IRM</span><span class="tag">répétabilité</span><span class="tag">SUVmax</span><span class="tag">correction d'atténuation</span>      </div>
+
+      <div class="doi">DOI : <a href="https://doi.org/10.2967/jnumed.126.272891" target="_blank" rel="noopener">10.2967/jnumed.126.272891</a></div>
+    </article>
+  </section>
+  <section class="category" id="cat-theranostics">
+    <h2>
+      <span class="emoji">💊</span>
+      <span>Théranostique & Radiopharmaceutiques</span>
+      <span class="count">6 articles</span>
+    </h2>
+    <p class="category-desc">Nouveaux traceurs, essais Lu-177, Ac-225, PSMA, FAPI, DOTATATE, developpement radiochimique.
+</p>
+
+    <article class="article">
+      <div class="article-header">
+        <h3>
+          <a href="https://doi.org/10.2967/jnumed.126.272735" target="_blank" rel="noopener">Radiopharmaceutical Therapy with [</a>
+        </h3>
+        <p class="title-fr">Thérapie radiopharmaceutique par [177Lu]Lu-DOTATATE dans les méningiomes réfractaires : étude nationale multicentrique française MELUTE</p>
+        <div class="metadata">
+          <span class="badge pubmed">PubMed</span>
+ <span>J Nucl Med</span> <span>15/10/2026</span>          <span class="stars s3" title="Pertinence 3/3">⭐⭐⭐</span>
+        </div>
+        <div class="authors">
+          Garabedian N, Zaragori T, Tabouret E, Taillandier L et al.        </div>
+        <div class="affiliation">CHRU Nancy, Department of Nuclear Medicine, Nancyclotep Imaging Platform, Nancy, France; a.verger@chru-nancy.fr.</div>
+      </div>
+
+      <div class="summary">
+        <dl>
+          <dt>Contexte</dt><dd>Les données sur le [177Lu]Lu-DOTATATE dans les méningiomes réfractaires sont limitées à de petites séries monocentriques ; l'étude MELUTE vise à consolider ces données à l'échelle nationale française dans le cadre d'une autorisation compassionnelle.</dd>
+          <dt>Méthode</dt><dd>Cohorte rétrospective multicentrique (18 centres français), 69 patients avec méningiome réfractaire traités entre juillet 2022 et décembre 2024 ; protocole standardisé 7,4 GBq toutes les 8 semaines, jusqu'à 4 cycles ; TEP [68Ga]Ga-DOTATOC et IRM cérébrale relues centralement selon les critères RANO volumétriques.</dd>
+          <dt>Résultats</dt><dd>SSP à 6 mois : 70% (IC95% 58,7–80,4%) ; SSP médiane : 14,6 mois ; SG médiane : 27,6 mois ; toxicité grade ≥3 : 16% (principalement lymphopénie) ; une seule interruption liée à la toxicité (sur 12 arrêts précoces). Grade OMS, score de Karnofsky et corticoïdes sont des facteurs pronostiques indépendants.</dd>
+          <dt>Implication clinique</dt><dd>MELUTE constitue la plus grande cohorte multicentrique standardisée à ce jour et confirme un profil efficacité/tolérance favorable du [177Lu]Lu-DOTATATE comme option théranostique dans les méningiomes réfractaires à fort captage somatostatinergique, appuyant son intégration dans les RCP nationales.</dd>
+        </dl>
+      </div>
+
+      <div class="tags">
+<span class="tag">méningiome réfractaire</span><span class="tag">[177Lu]Lu-DOTATATE</span><span class="tag">[68Ga]Ga-DOTATOC</span><span class="tag">théranostique</span><span class="tag">survie sans progression</span>      </div>
+
+      <div class="doi">DOI : <a href="https://doi.org/10.2967/jnumed.126.272735" target="_blank" rel="noopener">10.2967/jnumed.126.272735</a></div>
+    </article>
+    <article class="article">
+      <div class="article-header">
+        <h3>
+          <a href="https://doi.org/10.2967/jnumed.126.272939" target="_blank" rel="noopener">B7H3-Targeted Molecular Imaging for Highly Specific Diagnosis and In Vivo Noninvasive Detection of B7H3 in Breast Cancer.</a>
+        </h3>
+        <p class="title-fr">Imagerie moléculaire ciblant B7H3 pour le diagnostic hautement spécifique et la détection non invasive de B7H3 dans le cancer du sein</p>
+        <div class="metadata">
+          <span class="badge pubmed">PubMed</span>
+ <span>J Nucl Med</span> <span>15/10/2026</span>          <span class="stars s2" title="Pertinence 2/3">⭐⭐</span>
+        </div>
+        <div class="authors">
+          Xia L, Gong Y, He C, Mei B et al.        </div>
+        <div class="affiliation">Key Laboratory of Carcinogenesis and Translational Research (Ministry of Education), Beijing Key Laboratory of Research, Investigation and Evaluation of Radiopharmaceuticals, NMPA Key Laboratory for Research and Evaluation of Radiopharmaceuticals (National Medical Products Administration), Department of Nuclear Medicine, Peking University Cancer Hospital and Institute, Beijing, China; and xialei9012288@126.com songguohong@hotmail.com pekyz@163.com.</div>
+      </div>
+
+      <div class="summary">
+        <dl>
+          <dt>Contexte</dt><dd>B7H3 est un point de contrôle immunitaire surexprimé dans les tumeurs solides, représentant une cible théranostique potentielle ; son intérêt diagnostique en TEP dans le cancer du sein reste à établir.</dd>
+          <dt>Méthode</dt><dd>Étude prospective monocentrique, 30 patientes avec cancer du sein (tous sous-types), TEP/TDM au [⁶⁸Ga]Ga-B7H3-BCH comparée au [¹⁸F]FDG ; immunohistochimie B7H3 disponible chez 25 patientes, 157 lésions analysées.</dd>
+          <dt>Résultats</dt><dd>B7H3 positif en IHC dans 84 % des échantillons ; taux de détection lésionnelle : 96,8 % ([⁶⁸Ga]Ga-B7H3-BCH) vs 92,4 % ([¹⁸F]FDG) ; SUVmax médian global 9,5, métastases osseuses 10,9 ; modification du stade ou de la stratégie thérapeutique chez 8/30 patientes (27 %).</dd>
+          <dt>Implication clinique</dt><dd>Le [⁶⁸Ga]Ga-B7H3-BCH TEP/TDM permet un bilan non invasif de l'expression de B7H3, avec un impact sur la décision clinique, ouvrant la voie à une sélection des patients pour les thérapies anti-B7H3 et à une approche théranostique future.</dd>
+        </dl>
+      </div>
+
+      <div class="tags">
+<span class="tag">cancer du sein</span><span class="tag">B7H3</span><span class="tag">68Ga</span><span class="tag">TEP/TDM</span><span class="tag">immunothérapie</span>      </div>
+
+      <div class="doi">DOI : <a href="https://doi.org/10.2967/jnumed.126.272939" target="_blank" rel="noopener">10.2967/jnumed.126.272939</a></div>
+    </article>
+    <article class="article">
+      <div class="article-header">
+        <h3>
+          <a href="https://doi.org/10.2967/jnumed.126.272351" target="_blank" rel="noopener">Brain-Specific Quantification of Somatostatin Receptor Expression: SUV</a>
+        </h3>
+        <p class="title-fr">Quantification cérébrale spécifique de l'expression des récepteurs de la somatostatine : SUVmax et SUVRsss comme corrélats quantitatifs du score de Krenning dans le méningiome</p>
+        <div class="metadata">
+          <span class="badge pubmed">PubMed</span>
+ <span>J Nucl Med</span> <span>15/10/2026</span>          <span class="stars s2" title="Pertinence 2/3">⭐⭐</span>
+        </div>
+        <div class="authors">
+          Marulanda-Corzo V, Farid M, Hill T, Haghdel A et al.        </div>
+        <div class="affiliation">Department of Radiology, Weill Cornell Medicine, New York, New York.</div>
+      </div>
+
+      <div class="summary">
+        <dl>
+          <dt>Contexte</dt><dd>Le score de Krenning (grading visuel basé sur foie/rate) reste la référence pour éligibilité à la PRRT dans le méningiome, mais son application intracrânienne est sous-optimale ; des seuils quantitatifs PET spécifiques au cerveau manquent.</dd>
+          <dt>Méthode</dt><dd>Étude rétrospective monocentrique, 44 patients / 70 méningiomes, PET/CT [⁶⁸Ga]DOTATATE vertex-cuisses avec co-recalage IRM ; corrélation de Spearman entre SUVmax, SUVRsss (normalisé au sinus sagittal supérieur) et score de Krenning ; analyse ROC (indice de Youden).</dd>
+          <dt>Résultats</dt><dd>SUVmax et SUVRsss fortement corrélés au score de Krenning (ρ = 0,77 et 0,70, p < 0,0001) ; seuils optimaux SUVRsss : 9,00 (AUC 0,86) pour Krenning 2 vs 3 et 29,84 (AUC 0,98) pour Krenning 3 vs 4 ; SUVmax : 7,20 (AUC 0,92) et 30,70 (AUC 0,98).</dd>
+          <dt>Implication clinique</dt><dd>Des seuils quantitatifs SUV cérébraux peuvent remplacer le grading visuel foie/rate pour décider de l'éligibilité à la PRRT dans le méningiome, ouvrant la voie à une acquisition cérébrale seule sans imagerie corps entier dans certains contextes.</dd>
+        </dl>
+      </div>
+
+      <div class="tags">
+<span class="tag">méningiome</span><span class="tag">DOTATATE</span><span class="tag">score de Krenning</span><span class="tag">PRRT</span><span class="tag">quantification PET</span>      </div>
+
+      <div class="doi">DOI : <a href="https://doi.org/10.2967/jnumed.126.272351" target="_blank" rel="noopener">10.2967/jnumed.126.272351</a></div>
+    </article>
+    <article class="article">
+      <div class="article-header">
+        <h3>
+          <a href="https://doi.org/10.1053/j.semnuclmed.2026.09.002" target="_blank" rel="noopener">Clinical translation of targeted alpha therapy: safety, dosimetry, radiation protection, and regulatory considerations.</a>
+        </h3>
+        <p class="title-fr">Traduction clinique de la thérapie alpha ciblée : sécurité, dosimétrie, radioprotection et considérations réglementaires</p>
+        <div class="metadata">
+          <span class="badge pubmed">PubMed</span>
+ <span>Semin Nucl Med</span> <span>15/10/2026</span>          <span class="stars s2" title="Pertinence 2/3">⭐⭐</span>
+        </div>
+        <div class="authors">
+          Jokar N, Pashazadeh A, Juweid ME, Najdian A et al.        </div>
+        <div class="affiliation">The Persian Gulf Nuclear Medicine Research Center, Department of Nuclear Medicine, Molecular Imaging, and Theranostics, Bushehr Medical University Hospital, School of Medicine, Bushehr University of Medical Sciences, Bushehr, Iran.</div>
+      </div>
+
+      <div class="summary">
+        <dl>
+          <dt>Contexte</dt><dd>La thérapie alpha ciblée (TAT) émerge comme approche théranostique cliniquement pertinente, mais son déploiement reste complexe en raison des défis spécifiques aux émetteurs alpha (recul nucléaire, redistribution des produits fils, dosimétrie à petite échelle).</dd>
+          <dt>Méthode</dt><dd>Revue narrative dans Seminars in Nuclear Medicine couvrant l'ensemble des radionucléides alpha thérapeutiques (Ra-223, Ac-225, Pb-212, Th-227, At-211, Bi-213), leurs fondements cliniques/réglementaires et les pratiques de radioprotection institutionnelle.</dd>
+          <dt>Résultats</dt><dd>Ra-223 dispose du cadre clinique et réglementaire le plus solide ; les autres agents (Ac-225, Pb-212, Th-227, At-211, Bi-213) sont à des stades variables de développement. Les limites principales identifiées : approvisionnement en radionucléides, dosimétrie produit-spécifique, toxicité rénale/salivaire/médullaire, standardisation GMP et hétérogénéité réglementaire.</dd>
+          <dt>Implication clinique</dt><dd>Synthèse de référence pour les équipes déployant ou anticipant la TAT en routine : distingue les pratiques validées (imagerie quantitative, Monte Carlo, dosimétrie voxel) des applications encore expérimentales (IA, automatisation), et cadre les exigences réglementaires selon les juridictions.</dd>
+        </dl>
+      </div>
+
+      <div class="tags">
+<span class="tag">thérapie alpha ciblée</span><span class="tag">dosimétrie</span><span class="tag">radioprotection</span><span class="tag">radium-223</span><span class="tag">actinium-225</span>      </div>
+
+      <div class="doi">DOI : <a href="https://doi.org/10.1053/j.semnuclmed.2026.09.002" target="_blank" rel="noopener">10.1053/j.semnuclmed.2026.09.002</a></div>
+    </article>
+    <article class="article">
+      <div class="article-header">
+        <h3>
+          <a href="https://doi.org/10.2967/jnumed.126.273076" target="_blank" rel="noopener">[</a>
+        </h3>
+        <p class="title-fr">Distribution corps entier du [18F]F-AraG en TEP/TDM chez des adultes sans malignité active</p>
+        <div class="metadata">
+          <span class="badge pubmed">PubMed</span>
+ <span>J Nucl Med</span> <span>15/10/2026</span>          <span class="stars s2" title="Pertinence 2/3">⭐⭐</span>
+        </div>
+        <div class="authors">
+          Chae HD, Nobashi TW, Shrestha U, Cabrera H et al.        </div>
+        <div class="affiliation">CellSight Technologies Inc., San Francisco, California.</div>
+      </div>
+
+      <div class="summary">
+        <dl>
+          <dt>Contexte</dt><dd>Le [18F]F-AraG est un traceur TEP ciblant les lymphocytes T activés et la biogenèse mitochondriale ; établir sa distribution physiologique chez des sujets sains est indispensable avant interprétation en contexte oncologique.</dd>
+          <dt>Méthode</dt><dd>Étude prospective, 20 adultes sans malignité active, TEP/TDM [18F]F-AraG unique, analyse de la captation en relation avec antécédents, médicaments et facteurs physiologiques.</dd>
+          <dt>Résultats</dt><dd>Activation bilatérale du tissu adipeux brun chez 3 participants sous médicaments activateurs (sans froid ni jeûne) ; captation vertébrale élevée chez 1 sujet (marqueur de mauvais pronostic sous ICI dans le cancer du poumon) ; captation péri-implant asymétrique chez 1/2 patientes avec implants mammaires ; captation pulmonaire postérieure associée aux antécédents respiratoires.</dd>
+          <dt>Implication clinique</dt><dd>Ces variantes physiologiques et pharmaco-induites du [18F]F-AraG doivent être connues pour éviter les faux positifs lors de l'interprétation des TEP immuno-oncologiques en pratique clinique.</dd>
+        </dl>
+      </div>
+
+      <div class="tags">
+<span class="tag">[18F]F-AraG</span><span class="tag">immuno-oncologie</span><span class="tag">lymphocytes T activés</span><span class="tag">TEP corps entier</span><span class="tag">tissu adipeux brun</span>      </div>
+
+      <div class="doi">DOI : <a href="https://doi.org/10.2967/jnumed.126.273076" target="_blank" rel="noopener">10.2967/jnumed.126.273076</a></div>
+    </article>
+    <article class="article">
+      <div class="article-header">
+        <h3>
+          <a href="https://doi.org/10.2967/jnumed.126.273904" target="_blank" rel="noopener">Streamlining Collaborations to Overcome the Challenges Facing Theranostics Clinical Trials.</a>
+        </h3>
+        <p class="title-fr">Optimiser les collaborations pour surmonter les défis des essais cliniques en théranostique</p>
+        <div class="metadata">
+          <span class="badge pubmed">PubMed</span>
+ <span>J Nucl Med</span> <span>15/10/2026</span>          <span class="stars s1" title="Pertinence 1/3">⭐</span>
+        </div>
+        <div class="authors">
+          Chen DL, Jeffers CD, McConathy JE, Osborne D et al.        </div>
+      </div>
+
+      <div class="summary">
+        <dl>
+          <dt>Contexte</dt><dd>Les essais cliniques en théranostique se heurtent à des obstacles spécifiques (logistique, réglementation, production) qui freinent leur développement.</dd>
+          <dt>Méthode</dt><dd>Article de perspective/opinion publié dans le JNM, sans abstract disponible — probablement une synthèse d'experts sur les stratégies collaboratives.</dd>
+          <dt>Résultats</dt><dd>Non disponibles (abstract absent).</dd>
+          <dt>Implication clinique</dt><dd>Propose des pistes organisationnelles pour faciliter la conduite des essais théranostiques multicentriques.</dd>
+        </dl>
+      </div>
+
+      <div class="tags">
+<span class="tag">théranostique</span><span class="tag">essais cliniques</span><span class="tag">collaboration</span><span class="tag">radiopharmaceutiques</span>      </div>
+
+      <div class="doi">DOI : <a href="https://doi.org/10.2967/jnumed.126.273904" target="_blank" rel="noopener">10.2967/jnumed.126.273904</a></div>
+    </article>
+  </section>
+  <section class="category" id="cat-oncology">
+    <h2>
+      <span class="emoji">🎯</span>
+      <span>Oncologie</span>
+      <span class="count">1 article</span>
+    </h2>
+    <p class="category-desc">Staging, evaluation de reponse therapeutique, applications cliniques oncologiques.
+</p>
+
+    <article class="article">
+      <div class="article-header">
+        <h3>
+          <a href="https://doi.org/10.2967/jnumed.126.273553" target="_blank" rel="noopener">CD70-Targeted PET/CT in a Patient with von Hippel-Lindau Syndrome and Clear Cell Renal Cell Carcinoma.</a>
+        </h3>
+        <p class="title-fr">TEP/TDM ciblant CD70 chez un patient atteint du syndrome de von Hippel-Lindau et d'un carcinome rénal à cellules claires</p>
+        <div class="metadata">
+          <span class="badge pubmed">PubMed</span>
+ <span>J Nucl Med</span> <span>15/10/2026</span>          <span class="stars s2" title="Pertinence 2/3">⭐⭐</span>
+        </div>
+        <div class="authors">
+          Deng A, Wei W        </div>
+        <div class="affiliation">Department of Nuclear Medicine, Institute of Clinical Nuclear Medicine, Renji Hospital, School of Medicine, Shanghai Jiao Tong University, Shanghai, China.</div>
+      </div>
+
+      <div class="summary">
+        <dl>
+          <dt>Contexte</dt><dd>Le carcinome rénal à cellules claires (ccRCC) surexprime CD70, une cible théranostique prometteuse ; le syndrome de von Hippel-Lindau (VHL) prédispose à des lésions multiples nécessitant un bilan d'extension précis.</dd>
+          <dt>Méthode</dt><dd>Rapport de cas unique : patient VHL avec ccRCC exploré par TEP/TDM avec un traceur ciblant CD70, au sein du service de médecine nucléaire de l'hôpital Renji (Shanghai).</dd>
+          <dt>Résultats</dt><dd>Données chiffrées non disponibles (abstract absent) ; la publication illustre la faisabilité de l'imagerie CD70-TEP dans ce contexte clinique.</dd>
+          <dt>Implication clinique</dt><dd>CD70 émerge comme cible d'imagerie TEP dans le ccRCC, ouvrant la voie à une approche théranostique dans les tumeurs VHL-associées ; à confirmer sur des cohortes plus larges.</dd>
+        </dl>
+      </div>
+
+      <div class="tags">
+<span class="tag">carcinome rénal à cellules claires</span><span class="tag">CD70</span><span class="tag">TEP/TDM</span><span class="tag">von Hippel-Lindau</span><span class="tag">nouveau traceur</span>      </div>
+
+      <div class="doi">DOI : <a href="https://doi.org/10.2967/jnumed.126.273553" target="_blank" rel="noopener">10.2967/jnumed.126.273553</a></div>
+    </article>
+  </section>
+  <section class="category" id="cat-ai_radiomics">
+    <h2>
+      <span class="emoji">🤖</span>
+      <span>IA & Radiomique</span>
+      <span class="count">1 article</span>
+    </h2>
+    <p class="category-desc">Deep learning, machine learning, segmentation, prediction de reponse.
+</p>
+
+    <article class="article">
+      <div class="article-header">
+        <h3>
+          <a href="https://doi.org/10.2967/jnumed.125.271912" target="_blank" rel="noopener">Multimodal Visual Question Answering System for Survival Prognosis in PSMA-Targeted Radiopharmaceutical Therapy.</a>
+        </h3>
+        <p class="title-fr">Système multimodal de questions-réponses visuelles pour le pronostic de survie en thérapie radiopharmaceutique ciblant le PSMA</p>
+        <div class="metadata">
+          <span class="badge pubmed">PubMed</span>
+ <span>J Nucl Med</span> <span>15/10/2026</span>          <span class="stars s2" title="Pertinence 2/3">⭐⭐</span>
+        </div>
+        <div class="authors">
+          Kassar M, Hu J, Rauscher I, Gomes CV et al.        </div>
+        <div class="affiliation">Chair for Computer Aided Medical Procedures and Augmented Reality, TUM School of Computation, Information and Technology, Technische Universität München, München bei Garching, Germany; mohamed.kassar@tum.de.</div>
+      </div>
+
+      <div class="summary">
+        <dl>
+          <dt>Contexte</dt><dd>La thérapie au [177Lu]Lu-PSMA est établie dans le mCRPC, mais la prédiction des bons répondeurs à long terme reste un défi ; les modèles vision-langage (VQA) pourraient intégrer imagerie et données cliniques comme le ferait un clinicien.</dd>
+          <dt>Méthode</dt><dd>Étude rétrospective multicentrique, 110 patients mCRPC traités par [177Lu]Lu-PSMA I&T ou PSMA-617 ; modèle VQA combinant encodeur 3D, RadBERT et transformeur cross-modal sur images TEP/TEMP baseline et après 2 cycles + données cliniques ; prédiction de survie à 24 mois, validation externe sur cohorte PSMA-617.</dd>
+          <dt>Résultats</dt><dd>Précision 81,8 % (IC95% 0,52–0,95) en validation interne (SPECT/TEP + PSA) ; 71,9 % (IC95% 0,53–0,86) en validation externe après fine-tuning few-shot ; AUC ROC 0,75 (meilleure parmi tous les modèles) ; courbe de survie non significativement différente du ground-truth (log-rank p=0,76).</dd>
+          <dt>Implication clinique</dt><dd>Preuve de concept prometteuse d'un modèle VQA médical adapté au workflow clinicien pour stratifier la survie sous Lu-PSMA, surpassant les approches ML classiques, mais cohorte limitée (n=110) nécessitant validation prospective à grande échelle.</dd>
+        </dl>
+      </div>
+
+      <div class="tags">
+<span class="tag">PSMA</span><span class="tag">Lu-177</span><span class="tag">mCRPC</span><span class="tag">vision-language model</span><span class="tag">pronostic survie</span>      </div>
+
+      <div class="doi">DOI : <a href="https://doi.org/10.2967/jnumed.125.271912" target="_blank" rel="noopener">10.2967/jnumed.125.271912</a></div>
+    </article>
+  </section>
+
+
+  <footer>
+    <p><strong>Sources interrogées :</strong> PubMed (journaux cibles), RSS officiels (SNMMI, EANM, AuntMinnie, journaux), arXiv (physics.med-ph, q-bio.QM, cs.CV), medRxiv.</p>
+    <p><strong>Exécution :</strong> 2026-10-16T07:58:09.272655+00:00 · durée ?s · fenêtre 36h</p>
+    <p><strong>Coût Claude :</strong>
+      18113 tokens in ·
+      5357 tokens out ·
+      0 cache read
+    </p>
+    <p>Généré par <code>nuclear-med-review v1.0.0</code></p>
+  </footer>
+</div>
+
+<script>
+(function() {
+  // Charge la preference sauvegardee (sinon dark par defaut)
+  try {
+    var pref = localStorage.getItem('theme');
+    if (pref === 'light') document.documentElement.setAttribute('data-theme', 'light');
+  } catch (e) {}
+})();
+function toggleTheme() {
+  var html = document.documentElement;
+  var next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  html.setAttribute('data-theme', next);
+  try { localStorage.setItem('theme', next); } catch (e) {}
+}
+</script>
+</body>
+</html>
