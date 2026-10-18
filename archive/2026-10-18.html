@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Revue MN — 18/10/2026</title>
+<style>
+:root {
+  --bg: #0f1419;
+  --bg-card: #1a1f26;
+  --bg-card-hover: #212832;
+  --border: #2a3340;
+  --text: #e6edf3;
+  --text-muted: #9aa8b5;
+  --text-dim: #6b7887;
+  --accent: #4aa3df;
+  --accent-hover: #6bb8e8;
+  --star: #f5c842;
+  --strong: #ff6b6b;
+  --radius: 10px;
+  --shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+[data-theme="light"] {
+  --bg: #f8fafb;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f0f4f7;
+  --border: #d8dee4;
+  --text: #1a1f26;
+  --text-muted: #4a5864;
+  --text-dim: #78848f;
+  --accent: #2b7cb8;
+  --accent-hover: #1e5a87;
+  --star: #d4a017;
+  --shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  background: var(--bg);
+  color: var(--text);
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+.container {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 24px 20px 80px;
+}
+header.hero {
+  padding: 20px 0 24px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 24px;
+}
+.hero-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+.date {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+.theme-toggle {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 6px 12px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+.theme-toggle:hover { background: var(--bg-card-hover); }
+.hero-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-top: 10px;
+}
+.hero-stats strong { color: var(--text); font-weight: 600; }
+
+/* Sommaire */
+.toc {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  margin-bottom: 32px;
+}
+.toc h2 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-dim);
+  margin: 0 0 12px;
+  font-weight: 600;
+}
+.toc ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 6px;
+}
+.toc a {
+  color: var(--text);
+  text-decoration: none;
+  padding: 6px 8px;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.92rem;
+}
+.toc a:hover { background: var(--bg-card-hover); color: var(--accent); }
+.toc .count {
+  color: var(--text-dim);
+  font-size: 0.8rem;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Categories */
+.category {
+  margin-bottom: 40px;
+  scroll-margin-top: 20px;
+}
+.category h2 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0 0 4px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--accent);
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+.category h2 .emoji { font-size: 1.3rem; }
+.category h2 .count {
+  color: var(--text-dim);
+  font-size: 0.85rem;
+  font-weight: 400;
+  margin-left: auto;
+}
+.category-desc {
+  color: var(--text-dim);
+  font-size: 0.85rem;
+  margin: 0 0 16px;
+  font-style: italic;
+}
+
+/* Cartes articles */
+.article {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  margin-bottom: 14px;
+  transition: background 0.15s, transform 0.15s;
+  box-shadow: var(--shadow);
+}
+.article:hover {
+  background: var(--bg-card-hover);
+  transform: translateY(-1px);
+}
+.article-header {
+  margin-bottom: 10px;
+}
+.article h3 {
+  font-size: 1rem;
+  margin: 0 0 4px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+.article h3 a {
+  color: var(--text);
+  text-decoration: none;
+}
+.article h3 a:hover { color: var(--accent); }
+.title-fr {
+  font-style: italic;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin: 0 0 8px;
+  line-height: 1.4;
+}
+.metadata {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+  align-items: center;
+}
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+.badge.pubmed { background: #1e4976; color: #a8d4f0; }
+.badge.rss { background: #6b3e1a; color: #f2c68a; }
+.badge.arxiv { background: #5c1a4a; color: #e8a8d4; }
+.badge.medrxiv { background: #1a5c3d; color: #a8e8c8; }
+[data-theme="light"] .badge.pubmed { background: #d4e8f7; color: #1e4976; }
+[data-theme="light"] .badge.rss { background: #f7e3c8; color: #6b3e1a; }
+[data-theme="light"] .badge.arxiv { background: #f7d4ec; color: #5c1a4a; }
+[data-theme="light"] .badge.medrxiv { background: #d4f0df; color: #1a5c3d; }
+
+.stars {
+  color: var(--star);
+  letter-spacing: 2px;
+  font-size: 0.95rem;
+}
+.stars.s3 { font-weight: 700; }
+
+.authors {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  margin-bottom: 4px;
+}
+.affiliation {
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  font-style: italic;
+  margin-bottom: 12px;
+}
+
+/* Resume structure */
+.summary {
+  background: rgba(74,163,223,0.05);
+  border-left: 3px solid var(--accent);
+  padding: 12px 14px;
+  border-radius: 0 6px 6px 0;
+  margin: 10px 0;
+}
+.summary dl { margin: 0; }
+.summary dt {
+  font-weight: 600;
+  color: var(--accent);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-top: 8px;
+}
+.summary dt:first-child { margin-top: 0; }
+.summary dd {
+  margin: 2px 0 6px;
+  font-size: 0.93rem;
+  line-height: 1.55;
+}
+.summary dd:last-child { margin-bottom: 0; }
+
+/* Tags */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+}
+.tag {
+  background: var(--border);
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+.doi {
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  margin-top: 8px;
+  word-break: break-all;
+}
+.doi a { color: var(--accent); text-decoration: none; }
+.doi a:hover { text-decoration: underline; }
+
+/* Footer */
+footer {
+  margin-top: 60px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  font-size: 0.78rem;
+  color: var(--text-dim);
+}
+footer p { margin: 4px 0; }
+footer code {
+  background: var(--bg-card);
+  padding: 1px 5px;
+  border-radius: 4px;
+}
+
+/* Empty state */
+.empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-muted);
+}
+
+@media (max-width: 600px) {
+  .container { padding: 16px 14px 60px; }
+  h1 { font-size: 1.25rem; }
+  .article { padding: 14px 16px; }
+  .toc ul { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <header class="hero">
+    <div class="hero-top">
+      <div>
+        <h1>🔬 Revue MN</h1>
+        <div class="date">18/10/2026</div>
+      </div>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Basculer mode clair/sombre">🌓 Thème</button>
+    </div>
+    <div class="hero-stats">
+      <span><strong>2</strong> articles retenus</span>
+      <span><strong>1</strong> rubriques actives</span>
+      <span>~<strong>1</strong> min de lecture</span>
+      <span>74 scrapés → 2 retenus</span>
+    </div>
+  </header>
+
+  <nav class="toc" aria-label="Sommaire">
+    <h2>Sommaire</h2>
+    <ul>
+      <li><a href="#cat-imaging_techniques">
+        <span>🔬 Actualités & Techniques d'imagerie</span>
+        <span class="count">2</span>
+      </a></li>
+    </ul>
+  </nav>
+
+  <section class="category" id="cat-imaging_techniques">
+    <h2>
+      <span class="emoji">🔬</span>
+      <span>Actualités & Techniques d'imagerie</span>
+      <span class="count">2 articles</span>
+    </h2>
+    <p class="category-desc">Nouvelles sequences, protocoles d'acquisition, hardware TEP/TEMP, total-body PET, long axial FOV, reconstruction d'images.
+</p>
+
+    <article class="article">
+      <div class="article-header">
+        <h3>
+          <a href="https://www.auntminnie.com/clinical-news/molecular-imaging/article/15837735/eanm-nextgeneration-pet-scanner-cuts-imaging-time-to-one-minute" target="_blank" rel="noopener">EANM: Next-generation PET scanner cuts imaging time to one minute</a>
+        </h3>
+        <p class="title-fr">EANM : Un scanner TEP de nouvelle génération réduit le temps d'acquisition à une minute</p>
+        <div class="metadata">
+          <span class="badge rss">AuntMinnie Molecular Imaging</span>
+ <span>AuntMinnie Molecular Imaging</span> <span>18/10/2026</span>          <span class="stars s2" title="Pertinence 2/3">⭐⭐</span>
+        </div>
+        <div class="authors">
+          Will Morton        </div>
+      </div>
+
+      <div class="summary">
+        <dl>
+          <dt>Contexte</dt><dd>Réduire le temps d'acquisition TEP améliore le confort patient et le débit des scanners, enjeu clé pour la pratique clinique.</dd>
+          <dt>Méthode</dt><dd>Présentation au congrès EANM d'un scanner TEP nouvelle génération testé à des temps d'acquisition très courts (jusqu'à 1 minute) comparé à un TEP/CT standard ; évaluation de la qualité d'image par des lecteurs.</dd>
+          <dt>Résultats</dt><dd>Les images acquises au temps le plus court (1 min) ont été notées en moyenne plus favorablement que celles d'un scanner TEP/CT standard.</dd>
+          <dt>Implication clinique</dt><dd>Des acquisitions TEP en 1 minute de qualité supérieure au standard ouvrent la voie à une augmentation significative du débit et à une réduction de la charge patient.</dd>
+        </dl>
+      </div>
+
+      <div class="tags">
+<span class="tag">TEP nouvelle génération</span><span class="tag">temps d'acquisition</span><span class="tag">qualité image</span><span class="tag">TEP/CT</span><span class="tag">EANM</span>      </div>
+
+    </article>
+    <article class="article">
+      <div class="article-header">
+        <h3>
+          <a href="https://doi.org/10.1186/s13550-026-01521-w" target="_blank" rel="noopener">Matrix metalloproteinase imaging and survival prospects with aging in murine aortic aneurysm.</a>
+        </h3>
+        <p class="title-fr">Imagerie des métalloprotéases matricielles et pronostic de survie en fonction de l'âge dans l'anévrisme aortique murin</p>
+        <div class="metadata">
+          <span class="badge pubmed">PubMed</span>
+ <span>EJNMMI Res</span> <span>22/09/2026</span>          <span class="stars s2" title="Pertinence 2/3">⭐⭐</span>
+        </div>
+        <div class="authors">
+          Ghim M, Varli O, Ahmad AA, Neishabouri A et al.        </div>
+        <div class="affiliation">Yale Cardiovascular Research Center, Section of Cardiovascular Medicine, Department of Internal Medicine, Yale School of Medicine, 300 George Street, Room 770G, New Haven, 06511, CT, USA.</div>
+      </div>
+
+      <div class="summary">
+        <dl>
+          <dt>Contexte</dt><dd>Les métalloprotéases matricielles (MMP) sont surexprimées dans l'anévrisme aortique (AA) et l'âge est un facteur de risque majeur ; la relation entre vieillissement, activité MMP aortique et développement de l'AA n'avait pas été explorée par imagerie moléculaire.</dd>
+          <dt>Méthode</dt><dd>Étude préclinique chez des souris Apoe-/- jeunes (8–10 semaines) et âgées (>51 semaines) sous perfusion d'angiotensine II (modèle AA) ; imagerie TEP/TDM au ⁶⁴Cu-RYM2 (traceur ciblant les MMP) avant et 1 semaine après induction ; suivi de survie à 28 jours.</dd>
+          <dt>Résultats</dt><dd>Survie à 28 jours significativement inférieure chez les souris âgées vs jeunes (p<0,05) ; signal ⁶⁴Cu-RYM2 aortique significativement plus élevé chez les animaux âgés et chez les non-survivants vs survivants (p<0,01) ; l'augmentation de l'activité MMP précède la dissection aortique et corrèle avec l'infiltration macrophagique.</dd>
+          <dt>Implication clinique</dt><dd>Le traceur ⁶⁴Cu-RYM2 permet une stratification pronostique précoce dans l'AA murin ; couplé à des inhibiteurs de MMP, il pourrait constituer une approche théranostique pour prévenir et monitorer dissection/rupture aortique.</dd>
+        </dl>
+      </div>
+
+      <div class="tags">
+<span class="tag">anévrisme aortique</span><span class="tag">MMP</span><span class="tag">64Cu-RYM2</span><span class="tag">TEP/TDM</span><span class="tag">modèle murin</span>      </div>
+
+      <div class="doi">DOI : <a href="https://doi.org/10.1186/s13550-026-01521-w" target="_blank" rel="noopener">10.1186/s13550-026-01521-w</a></div>
+    </article>
+  </section>
+
+
+  <footer>
+    <p><strong>Sources interrogées :</strong> PubMed (journaux cibles), RSS officiels (SNMMI, EANM, AuntMinnie, journaux), arXiv (physics.med-ph, q-bio.QM, cs.CV), medRxiv.</p>
+    <p><strong>Exécution :</strong> 2026-10-18T07:51:15.604594+00:00 · durée ?s · fenêtre 36h</p>
+    <p><strong>Coût Claude :</strong>
+      2630 tokens in ·
+      893 tokens out ·
+      0 cache read
+    </p>
+    <p>Généré par <code>nuclear-med-review v1.0.0</code></p>
+  </footer>
+</div>
+
+<script>
+(function() {
+  // Charge la preference sauvegardee (sinon dark par defaut)
+  try {
+    var pref = localStorage.getItem('theme');
+    if (pref === 'light') document.documentElement.setAttribute('data-theme', 'light');
+  } catch (e) {}
+})();
+function toggleTheme() {
+  var html = document.documentElement;
+  var next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  html.setAttribute('data-theme', next);
+  try { localStorage.setItem('theme', next); } catch (e) {}
+}
+</script>
+</body>
+</html>
